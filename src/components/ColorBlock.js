@@ -46,6 +46,9 @@ const ColorBlock = ({
         <span className="color-name">{color.name}</span>
         <span className="color-hex">{color.hexCode}</span>
       </div>
+
+      {/* Border when hovered */}
+      {isHovered && <div className="border-overlay"></div>}
     </div>
   );
 };

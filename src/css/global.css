@@ -72,6 +72,12 @@ nav a {
   outline: none; /* Remove focus outline */
 }
 
+#block-size-slider {
+  margin: 0; /* Ensure no margin difference between themes */
+  padding: 0; /* Ensure no padding difference between themes */
+}
+
+
 .search-button i {
   font-size: 24px;
   transition: color 0.3s ease;
@@ -93,8 +99,11 @@ nav a {
 }
 
 .theme-toggle i {
-  font-size: 24px; /* Set icon size */
   transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  width: 24px;  /* Ensure icons have the same size */
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
 }
 
 .theme-toggle:active i {
@@ -207,7 +216,7 @@ nav a {
   width: 150px;
   height: 8px;
   outline: none;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: background 0.3s ease;
   margin-right: 25px;
 }
@@ -217,7 +226,7 @@ nav a {
   appearance: none;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -229,11 +238,20 @@ nav a {
 #block-size-slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  border: none;
 }
 
 #block-size-slider:hover::-moz-range-thumb {
   transform: scale(1.2);
 }
+
+#block-size-slider::-webkit-slider-thumb,
+#block-size-slider::-moz-range-thumb {
+  box-sizing: border-box;
+  border: none; /* Ensure no border that could shift the thumb */
+  margin: 0; /* Remove default margin */
+}
+

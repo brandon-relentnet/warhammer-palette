@@ -81,9 +81,9 @@ body.latte #block-size-slider {
 }
 
 body.latte #block-size-slider::-webkit-slider-thumb {
-  background: var(--latte-flamingo);
+  background: var(--latte-pink);
 }
 
 body.latte #block-size-slider::-moz-range-thumb {
-  background: var(--latte-flamingo);
+  background: var(--latte-pink);
 }

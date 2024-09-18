@@ -84,9 +84,9 @@ body.mocha #block-size-slider {
 }
 
 body.mocha #block-size-slider::-webkit-slider-thumb {
-  background: var(--mocha-flamingo);
+  background: var(--mocha-pink);
 }
 
 body.mocha #block-size-slider::-moz-range-thumb {
-  background: var(--mocha-flamingo);
+  background: var(--mocha-pink);
 }

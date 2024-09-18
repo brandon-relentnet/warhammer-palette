@@ -1,0 +1,249 @@
+[
+    {
+        "name": "Aeldari Emerald",
+        "hexCode": "#00A19B",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Ardcoat",
+        "hexCode": "url(#gradient_99189956050_technicalArdcoat)",
+        "type": [
+            "technical"
+        ]
+    },
+    {
+        "name": "Air Caste Thinner",
+        "hexCode": "url(#gradient_99189958086_airAirCasteThinner)",
+        "type": [
+            "air"
+        ]
+    },
+    {
+        "name": "Asurmen Blue",
+        "hexCode": "#0033A0",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Bad Moon Yellow",
+        "hexCode": "#FCEE0C",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Baal Red",
+        "hexCode": "#A01327",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Black Legion",
+        "hexCode": "#141414",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Berserker Bloodshade",
+        "hexCode": "#6B0C14",
+        "type": [
+            "shade"
+        ]
+    },
+    {
+        "name": "Briar Queen Chill",
+        "hexCode": "#98D9E4",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Celestium Blue",
+        "hexCode": "#005F85",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Doomfire Magenta",
+        "hexCode": "#D0277C",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Frostheart",
+        "hexCode": "#66B7E1",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Dreadful Visage",
+        "hexCode": "#CF98D0",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Garaghak's Sewer",
+        "hexCode": "#8D7552",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Gutrippa Flesh",
+        "hexCode": "#7A9B49",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Karandras Green",
+        "hexCode": "#007E4E",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Leviathan Purple",
+        "hexCode": "#4A256D",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Kroak Green",
+        "hexCode": "#739E77",
+        "type": [
+            "shade"
+        ]
+    },
+    {
+        "name": "Kroxigor Scales",
+        "hexCode": "#37ACDE",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Luxion Purple",
+        "hexCode": "#A347D0",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Mantis Warriors Green",
+        "hexCode": "#3C7E3E",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Munitorum Varnish",
+        "hexCode": "url(#gradient_99209999058_sprayMunitorumVarnish)",
+        "type": [
+            "spray"
+        ]
+    },
+    {
+        "name": "Magmadroth Flame",
+        "hexCode": "#D94412",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Mortarion Grime",
+        "hexCode": "#5A5637",
+        "type": [
+            "shade"
+        ]
+    },
+    {
+        "name": "Poxwalker",
+        "hexCode": "#847A61",
+        "type": [
+            "shade"
+        ]
+    },
+    {
+        "name": "Pylar Glacier",
+        "hexCode": "#B8E7E1",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Ratling Grime",
+        "hexCode": "#403C33",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Soulblight Grey",
+        "hexCode": "#9C9D9D",
+        "type": [
+            "shade"
+        ]
+    },
+    {
+        "name": "Sigvald Burgundy",
+        "hexCode": "#8A0F4C",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Stormshield",
+        "hexCode": "url(#gradient_99189956052_technicalStormShield)",
+        "type": [
+            "technical"
+        ]
+    },
+    {
+        "name": "Stormfiend",
+        "hexCode": "#41436D",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Targor Rageshade",
+        "hexCode": "#462A18",
+        "type": [
+            "shade"
+        ]
+    },
+    {
+        "name": "Striking Scorpion Green",
+        "hexCode": "#14A02E",
+        "type": [
+            "contrast"
+        ]
+    },
+    {
+        "name": "Tyran Blue",
+        "hexCode": "#005E99",
+        "type": [
+            "shade"
+        ]
+    },
+    {
+        "name": "White Scar",
+        "hexCode": "#FFFFFF",
+        "type": [
+            "air",
+            "layer",
+            "spray"
+        ]
+    }
+]

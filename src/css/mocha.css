@@ -4,20 +4,8 @@ body {
   color: var(--mocha-text);
 }
 
-nav {
-  background-color: var(--mocha-surface1);
-}
-
-nav a {
-  color: var(--mocha-text); /* Default link color */
-}
-
-nav a:hover {
-  color: var(--mocha-flamingo); /* Change on hover */
-}
-
-nav a:focus {
-  color: var(--mocha-red); /* Highlight link on focus */
+.navbar-container {
+  background-color: var(--mocha-mantle);
 }
 
 /* Search button */
@@ -58,7 +46,7 @@ nav a:focus {
 
 /* For Mocha Theme */
 body.mocha .color-block:hover::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -74,7 +62,7 @@ body.mocha .color-info {
 }
 
 /* Border overlay specific to Mocha theme */
-.border-overlay {
+body.mocha .border-overlay {
   border: 2px solid var(--mocha-pink); /* Mocha theme default */
 }
 
@@ -83,10 +71,27 @@ body.mocha #block-size-slider {
   background: var(--mocha-surface2);
 }
 
+body.mocha #block-size-slider::-moz-range-thumb,
 body.mocha #block-size-slider::-webkit-slider-thumb {
-  background: var(--mocha-pink);
+  background: var(--mocha-text);
 }
 
-body.mocha #block-size-slider::-moz-range-thumb {
-  background: var(--mocha-pink);
+body.mocha .nav-link {
+  color: var(--mocha-text);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+body.mocha .nav-link:hover {
+  color: var(--mocha-overlay1);
+}
+
+body.mocha .active-nav-link, body.mocha .active-nav-link:hover {
+  color: var(--mocha-pink);
+}
+
+body.mocha .total-blocks-container .total-number {
+  font-weight: bold;
+  color: var(--mocha-pink); /* Change color for mocha theme */
 }

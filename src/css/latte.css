@@ -4,20 +4,8 @@ body.latte {
   color: var(--latte-text);
 }
 
-body.latte nav {
-  background-color: var(--latte-surface1);
-}
-
-body.latte nav a {
-  color: var(--latte-text); /* Latte mode default link color */
-}
-
-body.latte nav a:hover {
-  color: var(--latte-flamingo); /* Latte hover color */
-}
-
-body.latte nav a:focus {
-  color: var(--latte-red); /* Latte focus color */
+body.latte .navbar-container {
+  background-color: var(--latte-mantle);
 }
 
 /* Search button */
@@ -55,7 +43,7 @@ body.latte .collection-block {
 
 /* For Latte Theme */
 body.latte .color-block:hover::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -71,7 +59,7 @@ body.latte .color-info {
 }
 
 /* Border overlay specific to Latte theme */
-.border-overlay {
+body.latte .border-overlay {
   border: 2px solid var(--latte-border); /* Customize latte border color if needed */
 }
 
@@ -80,10 +68,27 @@ body.latte #block-size-slider {
   background: var(--latte-surface2);
 }
 
-body.latte #block-size-slider::-webkit-slider-thumb {
-  background: var(--latte-pink);
+body.latte #block-size-slider::-webkit-slider-thumb,
+body.latte #block-size-slider::-moz-range-thumb {
+  background: var(--latte-text);
 }
 
-body.latte #block-size-slider::-moz-range-thumb {
-  background: var(--latte-pink);
+body.latte .total-blocks-container .total-number {
+  font-weight: bold;
+  color: var(--latte-pink); /* Change color for mocha theme */
+}
+
+body.latte .nav-link {
+  color: var(--latte-text);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+body.latte .nav-link:hover {
+  color: var(--latte-overlay1);
+}
+
+body.latte .active-nav-link, body.latte .active-nav-link:hover {
+  color: var(--latte-pink);
 }

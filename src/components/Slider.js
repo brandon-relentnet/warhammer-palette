@@ -11,7 +11,6 @@ const Slider = ({ blockSize, handleBlockSizeChange }) => {
         step="1"
         value={blockSize}
         onChange={handleBlockSizeChange}
-        style={{ marginLeft: "10px" }}
       />
     </div>
   );

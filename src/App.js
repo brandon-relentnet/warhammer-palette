@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Filters from "./components/Filters";
 import ColorBlockDisplay from "./components/ColorBlockDisplay";
 import CollectionDisplay from "./components/CollectionDisplay";
@@ -10,7 +14,13 @@ import "./css/latte.css";
 import "./css/mocha.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Homepage from "./components/Homepage";
-import Slider from "./components/Slider";
+import Navbar from "./components/Navbar";
+
+// Helper to get saved theme from localStorage (before render)
+const getInitialTheme = () => {
+  const savedTheme = localStorage.getItem("theme");
+  return savedTheme ? savedTheme : "mocha"; // Default to mocha if nothing is saved
+};
 
 const filterOptions = [
   "base",
@@ -87,12 +97,20 @@ function App() {
   const [searchTerm, setSearchTerm] = useState(""); // State to store the search term
   const [isOverwrite, setIsOverwrite] = useState(false); // State for overwrite confirmation
   const [importedCollection, setImportedCollection] = useState([]); // Temporarily hold the imported collection
-  const [theme, setTheme] = useState("mocha"); // State for managing the theme
-  const [blockSize, setBlockSize] = useState(150); // Initialize with default block size
+  const [theme, setTheme] = useState(getInitialTheme);
 
-  const handleBlockSizeChange = (e) => {
-    setBlockSize(e.target.value); // Instantly update the block size state when slider is moved
-  };
+  const [blockSize, setBlockSize] = useState(() => {
+    const savedSize = localStorage.getItem("blockSize");
+    return savedSize ? parseInt(savedSize, 10) : 150; // Default to 150 if nothing is in localStorage
+  });
+
+  // Retrieve the block size from localStorage on page load
+  useEffect(() => {
+    const storedBlockSize = localStorage.getItem("blockSize");
+    if (storedBlockSize) {
+      setBlockSize(parseInt(storedBlockSize, 10));
+    }
+  }, []);
 
   // Load collection from localStorage on initial load
   useEffect(() => {
@@ -114,11 +132,11 @@ function App() {
     document.body.className = theme;
   }, [theme]);
 
-  // Toggle theme between Mocha and Latte
   const toggleTheme = () => {
     const newTheme = theme === "mocha" ? "latte" : "mocha";
     setTheme(newTheme);
-    document.body.className = newTheme; // Apply the theme class to the body element
+    localStorage.setItem("theme", newTheme); // Save theme to localStorage
+    document.body.className = newTheme; // Apply theme class to body
   };
 
   const handleFilterChange = (filter) => {
@@ -231,38 +249,14 @@ function App() {
 
   return (
     <Router>
-      <div className="navbar-container">
-        {/* Navigation */}
-        <nav>
-          <div className="displayed-colors">
-            <h4>#/{filteredColors.length}</h4>
-          </div>
-          <ul>
-            <li>
-              <Link to="/">~/</Link>
-            </li>
-            <li>
-              <Link to="/palette">palette/</Link>
-            </li>
-            <li>
-              <Link to="/collection">collection/</Link>
-            </li>
-          </ul>
-          <div className="slider-theme-container">
-            <Slider
-              blockSize={blockSize}
-              handleBlockSizeChange={handleBlockSizeChange}
-            />
-            <button className="theme-toggle" onClick={toggleTheme}>
-              {theme === "mocha" ? (
-                <i className="fas fa-sun"></i>
-              ) : (
-                <i className="fas fa-moon"></i>
-              )}
-            </button>
-          </div>
-        </nav>
-      </div>
+      <Navbar
+        filteredColors={filteredColors}
+        collection={collection}
+        blockSize={blockSize}
+        setBlockSize={setBlockSize}
+        toggleTheme={toggleTheme}
+        theme={theme}
+      />
 
       {/* Overwrite Confirmation Dialog */}
       {isOverwrite && (

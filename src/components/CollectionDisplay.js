@@ -13,11 +13,14 @@ const CollectionDisplay = ({
   setColorToRemove,
   handleExportCollection,
   handleImportCollection,
+  blockSize,
 }) => {
   const handleRemoveClick = (color) => {
     if (removeMode) {
       setColorToRemove(color); // Set the color to remove
-      const confirmed = window.confirm(`Are you sure you want to delete ${color.name}?`);
+      const confirmed = window.confirm(
+        `Are you sure you want to delete ${color.name}?`
+      );
       if (confirmed) {
         handleRemoveFromCollection(color);
       }
@@ -62,6 +65,7 @@ const CollectionDisplay = ({
             isSelected={false} // No need to highlight selected colors here
             isAddedToCollection={false} // No need to gray out in collection
             handleColorSelect={() => handleRemoveClick(color)} // Handle remove when clicked in remove mode
+            blockSize={blockSize}
           />
         ))}
       </div>

@@ -1,9 +1,11 @@
-@import url('./catppuccin-variables.css');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'); /* Poppins font */
+@import url("./catppuccin-variables.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"); /* Poppins font */
 
 /* Base body theming */
 body {
   font-family: "Poppins", sans-serif; /* Use Poppins font */
+  display: flex;
+  justify-content: center;
 }
 
 /* Sticky Navbar */
@@ -17,12 +19,16 @@ nav {
   z-index: 1000; /* Ensure the navbar stays on top */
 }
 
+#root {
+  width: 100%;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 15px;
+  gap: 25px;
 }
 
 nav li {
@@ -35,12 +41,31 @@ nav a {
   transition: color 0.3s;
 }
 
+.color-block-display,
+.collection-block-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+  justify-content: center;
+}
+
+.filters-search-container {
+  display: flex;
+  justify-content: space-between; /* Places one element on the left and the other on the right */
+  align-items: center; /* Vertically centers the elements if they have different heights */
+}
+
+.palette-route-container,
+.collection-route-container {
+  width: 80%;
+  margin-left: 10%; /* 15% space on the left side */
+  margin-right: 10%; /* 15% space on the right side */
+  text-align: center;
+}
+
 /* Search Icon Button */
 .search-button {
-  position: absolute;
-  left: 10px; /* Position search button on the far left */
-  top: 50%;
-  transform: translateY(-50%);
+  right: 10px; /* Position search button on the far left */
   background: none; /* No background */
   border: none; /* No border */
   cursor: pointer; /* Pointer cursor */
@@ -52,12 +77,13 @@ nav a {
   transition: color 0.3s ease;
 }
 
+.displayed-colors {
+  position: absolute; /* Make it independent of the normal layout flow */
+  left: 25px; /* Position it on the far right */
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
-  position: absolute; /* Make it independent of the normal layout flow */
-  right: 10px; /* Position it on the far right */
-  top: 50%; /* Center it vertically relative to nav */
-  transform: translateY(-50%); /* Adjust vertical centering */
   background: none; /* Remove background */
   border: none; /* Remove border */
   padding: 0; /* Remove padding */
@@ -73,6 +99,14 @@ nav a {
 
 .theme-toggle:active i {
   transform: scale(1.1); /* Slight scale-up */
+}
+
+.slider-theme-container {
+  position: absolute;
+  right: 25px;
+  display: flex;
+  justify-content: space-between; /* Places one element on the left and the other on the right */
+  align-items: center;
 }
 
 /* Confirm overwrite dialog */
@@ -108,11 +142,13 @@ nav a {
   width: 150px; /* Fixed width for square */
   height: 150px; /* Fixed height to match width */
   cursor: pointer;
-  transition: transform 0.2s ease, z-index 0s ease, box-shadow 0.2s ease, border 0.2s ease; /* Added box-shadow and border transition */
+  transition: transform 0.2s ease, z-index 0s ease, box-shadow 0.2s ease,
+    border 0.2s ease; /* Added box-shadow and border transition */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1; /* Default z-index */
+  transition: width 0.2s ease, height 0.2s ease, transform 0.2s ease; /* Smooth size and transform */
 }
 
 /* Border on hover (without affecting block size) */
@@ -140,7 +176,7 @@ nav a {
 
 /* Selected overlay state */
 .color-block.selected::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -162,4 +198,42 @@ nav a {
 .color-block:hover .color-info,
 .color-block.selected .color-info {
   opacity: 1; /* Show text on hover or selection */
+}
+
+/* Slider Styling */
+#block-size-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 150px;
+  height: 8px;
+  outline: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  margin-right: 25px;
+}
+
+#block-size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#block-size-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+#block-size-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#block-size-slider:hover::-moz-range-thumb {
+  transform: scale(1.2);
 }

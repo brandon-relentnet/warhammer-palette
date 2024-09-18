@@ -3,7 +3,7 @@ import React from 'react';
 
 const Filters = ({ selectedFilters, handleFilterChange, filterOptions }) => {
   return (
-    <div>
+    <div className='filters-container'>
       <h2>Filters</h2>
       {filterOptions.map((filter) => (
         <label key={filter}>

@@ -7,8 +7,10 @@ import Search from "./components/Search";
 import colorsData from "./color_database.json";
 import "./css/global.css";
 import "./css/latte.css";
-import "./css/mocha.css"; 
+import "./css/mocha.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Homepage from "./components/Homepage";
+import Slider from "./components/Slider";
 
 const filterOptions = [
   "base",
@@ -23,13 +25,15 @@ const filterOptions = [
 
 // Helper function to convert hex to HSL
 function hexToHSL(hex) {
-  let r = 0, g = 0, b = 0;
+  let r = 0,
+    g = 0,
+    b = 0;
   if (hex.length === 4) {
     r = parseInt(hex[1] + hex[1], 16);
     g = parseInt(hex[2] + hex[2], 16);
     b = parseInt(hex[3] + hex[3], 16);
   } else if (hex.length === 7) {
-    r = parseInt(hex.slice(1, 3), 16);  // Correct slicing
+    r = parseInt(hex.slice(1, 3), 16); // Correct slicing
     g = parseInt(hex.slice(3, 5), 16);
     b = parseInt(hex.slice(5, 7), 16);
   }
@@ -38,16 +42,25 @@ function hexToHSL(hex) {
   b /= 255;
   const max = Math.max(r, g, b),
     min = Math.min(r, g, b);
-  let h = 0, s = 0, l = (max + min) / 2;
+  let h = 0,
+    s = 0,
+    l = (max + min) / 2;
 
   if (max !== min) {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
-      default: break;
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+      default:
+        break;
     }
     h /= 6;
   }
@@ -75,6 +88,11 @@ function App() {
   const [isOverwrite, setIsOverwrite] = useState(false); // State for overwrite confirmation
   const [importedCollection, setImportedCollection] = useState([]); // Temporarily hold the imported collection
   const [theme, setTheme] = useState("mocha"); // State for managing the theme
+  const [blockSize, setBlockSize] = useState(150); // Initialize with default block size
+
+  const handleBlockSizeChange = (e) => {
+    setBlockSize(e.target.value); // Instantly update the block size state when slider is moved
+  };
 
   // Load collection from localStorage on initial load
   useEffect(() => {
@@ -213,68 +231,88 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div className="navbar-container">
         {/* Navigation */}
         <nav>
+          <div className="displayed-colors">
+            <h4>#/{filteredColors.length}</h4>
+          </div>
           <ul>
             <li>
-              <Link to="/">/palette</Link>
+              <Link to="/">~/</Link>
             </li>
             <li>
-              <Link to="/collection">/collection</Link>
+              <Link to="/palette">palette/</Link>
+            </li>
+            <li>
+              <Link to="/collection">collection/</Link>
             </li>
           </ul>
-          <button className="theme-toggle" onClick={toggleTheme}>
-            {theme === "mocha" ? (
-              <i className="fas fa-sun"></i>
-            ) : (
-              <i className="fas fa-moon"></i>
-            )}
-          </button>
-        </nav>
-
-        {/* Overwrite Confirmation Dialog */}
-        {isOverwrite && (
-          <div className="confirm-overwrite-dialog">
-            <p>
-              Do you want to overwrite your current collection with the imported
-              collection?
-            </p>
-            <button onClick={confirmOverwrite}>Overwrite</button>
-            <button onClick={cancelOverwrite}>Merge</button>
+          <div className="slider-theme-container">
+            <Slider
+              blockSize={blockSize}
+              handleBlockSizeChange={handleBlockSizeChange}
+            />
+            <button className="theme-toggle" onClick={toggleTheme}>
+              {theme === "mocha" ? (
+                <i className="fas fa-sun"></i>
+              ) : (
+                <i className="fas fa-moon"></i>
+              )}
+            </button>
           </div>
-        )}
+        </nav>
+      </div>
 
-        {/* Show the count of displayed colors */}
-        <div>
-          <h4>Displayed Colors: {filteredColors.length}</h4>
+      {/* Overwrite Confirmation Dialog */}
+      {isOverwrite && (
+        <div className="confirm-overwrite-dialog">
+          <p>
+            Do you want to overwrite your current collection with the imported
+            collection?
+          </p>
+          <button onClick={confirmOverwrite}>Overwrite</button>
+          <button onClick={cancelOverwrite}>Merge</button>
         </div>
+      )}
 
-        {/* Routing */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
+      {/* Routing */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="home-route-container">
+              <Homepage />
+            </div>
+          }
+        />
+        <Route
+          path="/palette"
+          element={
+            <div className="palette-route-container">
+              <div className="filters-search-container">
                 <Filters
                   selectedFilters={selectedFilters}
                   handleFilterChange={handleFilterChange}
                   filterOptions={filterOptions}
                 />
                 <Search handleSearch={handleSearch} />
-                <ColorBlockDisplay
-                  colors={filteredColors}
-                  selectedColors={selectedColors}
-                  handleColorSelect={handleColorSelect}
-                  handleAddToCollection={handleAddToCollection}
-                  collection={collection} // Pass collection to check if color is added
-                />
               </div>
-            }
-          />
-          <Route
-            path="/collection"
-            element={
+              <ColorBlockDisplay
+                colors={filteredColors}
+                selectedColors={selectedColors}
+                handleColorSelect={handleColorSelect}
+                handleAddToCollection={handleAddToCollection}
+                collection={collection} // Pass collection to check if color is added
+                blockSize={blockSize}
+              />
+            </div>
+          }
+        />
+        <Route
+          path="/collection"
+          element={
+            <div className="collection-route-container">
               <CollectionDisplay
                 collection={collection}
                 removeMode={removeMode}
@@ -284,11 +322,12 @@ function App() {
                 setColorToRemove={setColorToRemove}
                 handleExportCollection={handleExportCollection}
                 handleImportCollection={handleImportCollection}
+                blockSize={blockSize}
               />
-            }
-          />
-        </Routes>
-      </div>
+            </div>
+          }
+        />
+      </Routes>
     </Router>
   );
 }

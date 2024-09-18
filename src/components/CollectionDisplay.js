@@ -1,5 +1,8 @@
 import React from 'react';
 import ColorBlock from './ColorBlock'; // Use the same ColorBlock component for consistent behavior
+import "../css/global.css";
+import "../css/latte.css";
+import "../css/mocha.css"; 
 
 const CollectionDisplay = ({
   collection,
@@ -32,22 +35,26 @@ const CollectionDisplay = ({
   };
 
   return (
-    <div style={{ padding: '0 15%' }}> {/* Add 15% padding around the content */}
+    <div className="collection-display-container">
       <h2>Your Collection</h2>
 
       {/* Remove Mode Toggle */}
       <button onClick={() => setRemoveMode(!removeMode)}>
-        {removeMode ? 'Disable Remove Mode' : 'Enable Remove Mode'}
+        {removeMode ? "Disable Remove Mode" : "Enable Remove Mode"}
       </button>
 
       {/* Export and Import Buttons */}
       <div>
         <button onClick={handleExportCollection}>Export Collection</button>
-        <input type="file" accept="application/json" onChange={handleFileImport} />
+        <input
+          type="file"
+          accept="application/json"
+          onChange={handleFileImport}
+        />
       </div>
 
       {/* Display Collection */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0px' }}>
+      <div className="collection-block-display">
         {collection.map((color) => (
           <ColorBlock
             key={color.name}

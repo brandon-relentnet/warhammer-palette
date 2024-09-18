@@ -15,6 +15,7 @@ const ColorBlock = ({
   isSelected,
   isAddedToCollection,
   handleColorSelect,
+  blockSize,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -33,6 +34,8 @@ const ColorBlock = ({
           ? `0 10px 20px ${hexToRgba(color.hexCode)}`
           : "none", // Shadow based on hex code
         position: "relative",
+        width: `${blockSize}px`,
+        height: `${blockSize}px`,
       }}
     >
       {/* Overlay for readability on hover */}

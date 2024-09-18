@@ -77,3 +77,16 @@ body.mocha .color-info {
 .border-overlay {
   border: 2px solid var(--mocha-pink); /* Mocha theme default */
 }
+
+/* Mocha Slider */
+body.mocha #block-size-slider {
+  background: var(--mocha-surface2);
+}
+
+body.mocha #block-size-slider::-webkit-slider-thumb {
+  background: var(--mocha-flamingo);
+}
+
+body.mocha #block-size-slider::-moz-range-thumb {
+  background: var(--mocha-flamingo);
+}

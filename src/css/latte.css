@@ -74,3 +74,16 @@ body.latte .color-info {
 .border-overlay {
   border: 2px solid var(--latte-border); /* Customize latte border color if needed */
 }
+
+/* Latte Slider */
+body.latte #block-size-slider {
+  background: var(--latte-surface2);
+}
+
+body.latte #block-size-slider::-webkit-slider-thumb {
+  background: var(--latte-flamingo);
+}
+
+body.latte #block-size-slider::-moz-range-thumb {
+  background: var(--latte-flamingo);
+}

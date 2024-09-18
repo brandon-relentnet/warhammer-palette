@@ -1,10 +1,13 @@
 import React from 'react';
 import ColorBlock from './ColorBlock';
+import "../css/global.css";
+import "../css/latte.css";
+import "../css/mocha.css"; 
 
-const ColorBlockDisplay = ({ colors, selectedColors, handleColorSelect, handleAddToCollection, collection }) => {
+const ColorBlockDisplay = ({ colors, selectedColors, handleColorSelect, handleAddToCollection, collection, blockSize }) => {
   return (
-    <div style={{ padding: '0 15%' }}> {/* Add 15% padding around the content */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0px' }}>
+    <div className='color-block-display-container'>
+      <div className='color-block-display'>
         {colors.map((color) => {
           const isAddedToCollection = collection.some((collectedColor) => collectedColor.name === color.name);
 
@@ -15,6 +18,7 @@ const ColorBlockDisplay = ({ colors, selectedColors, handleColorSelect, handleAd
               isSelected={selectedColors.includes(color)}
               isAddedToCollection={isAddedToCollection}
               handleColorSelect={handleColorSelect}
+              blockSize={blockSize}
             />
           );
         })}

@@ -1,71 +1,102 @@
-# Getting Started with Create React App
+# 🎨 Warhammer Palette Collection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The **Warhammer Palette Collection** is a web application designed for hobbyists, painters, and Warhammer enthusiasts. With this tool, you can browse, search, and organize an extensive collection of Warhammer paint colors. Create your own personalized collections, filter by paint types, and enjoy a sleek interface with theme options to fit your style. 🎨✨
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- 🔍 **Search**: Quickly find colors by name or hex code.
+- 🎨 **Filter by Paint Type**: Easily narrow down paints by categories like base, layer, contrast, etc.
+- 🖌️ **Add to Collection**: Save your favorite colors for future reference.
+- 💾 **Export/Import Collections**: Seamlessly export your color collections to JSON or import existing ones.
+- 🌗 **Theming**: Toggle between dark and light themes (Mocha, Latte, Frappe) for a tailored user experience.
+- 🔄 **Real-time Persistence**: Your collections are automatically saved in local storage for easy access across sessions.
+- 🌈 **HSL Sorting**: Colors are displayed in a visually pleasing gradient based on hue, saturation, and lightness.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Live Demo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Check out the live version of the project [here](#). *(Add link when available)*
 
-### `npm test`
+## 📦 Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/yourusername/warhammer-palette-collection.git
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   cd warhammer-palette-collection
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Install the dependencies:
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   This will start the app on `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎮 Usage
 
-## Learn More
+1. **Search for Colors**: Click the search icon in the nav bar to quickly find a color by name or hex code.
+2. **Filter Colors**: Select from the filter options to narrow down the colors by type (base, layer, etc.).
+3. **Add Colors to Collection**: Click any color block to select it, then hit the "Add to Collection" button to save it.
+4. **Export/Import Collection**: 
+   - Export your collection with the **Export Collection** button on the collections page.
+   - Import an existing collection by using the **Import Collection** button.
+5. **Switch Themes**: Toggle between Mocha (dark) and Latte (light) by clicking the 🌞/🌜 icon at the top-right.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌈 Theming
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This app uses the **Catppuccin** theme with support for Mocha and Latte variants. Users can easily toggle between these themes using the button in the navigation bar.
 
-### Code Splitting
+### How to Customize Themes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Want to personalize your experience further? You can modify the `catppuccin-variables.css` file located in the `src/css/` folder to adjust theme colors and add new variants.
 
-### Analyzing the Bundle Size
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+We ❤️ contributions! To help improve Warhammer Palette Collection, follow these steps:
 
-### Making a Progressive Web App
+1. **Fork** the repository.
+2. Create a new branch:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```bash
+   git checkout -b feature-branch
+   ```
 
-### Advanced Configuration
+3. Make your changes and commit them:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```bash
+   git commit -m 'Add new feature'
+   ```
 
-### Deployment
+4. Push to your branch:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   git push origin feature-branch
+   ```
 
-### `npm run build` fails to minify
+5. Submit a pull request and describe your changes in detail.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# warhammer-palette
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+Enjoy creating your perfect Warhammer color palette! 🎨⚔️
+
+---

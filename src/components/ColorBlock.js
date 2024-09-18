@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "./ColorBlock.css"; // Ensure the CSS file is imported
+import "../css/global.css";
+import "../css/latte.css";
+import "../css/mocha.css"; 
 
 const hexToRgba = (hex, alpha = 0.5) => {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -44,6 +46,7 @@ const ColorBlock = ({
 
       <div className="color-info">
         <span className="color-name">{color.name}</span>
+        <br />
         <span className="color-hex">{color.hexCode}</span>
       </div>
 

@@ -1,0 +1,76 @@
+/* Latte theme styles */
+body.latte {
+  background-color: var(--latte-base);
+  color: var(--latte-text);
+}
+
+body.latte nav {
+  background-color: var(--latte-surface1);
+}
+
+body.latte nav a {
+  color: var(--latte-text); /* Latte mode default link color */
+}
+
+body.latte nav a:hover {
+  color: var(--latte-flamingo); /* Latte hover color */
+}
+
+body.latte nav a:focus {
+  color: var(--latte-red); /* Latte focus color */
+}
+
+/* Search button */
+body.latte .search-button i {
+  color: var(--latte-text); /* Latte mode search icon */
+}
+
+body.latte .search-button:hover i {
+  color: var(--latte-overlay1);
+}
+
+/* Theme toggle button */
+body.latte .theme-toggle i {
+  color: var(--latte-text);
+}
+
+/* Confirm overwrite dialog */
+body.latte .confirm-overwrite-dialog {
+  background-color: var(--latte-surface2);
+}
+
+body.latte .confirm-overwrite-dialog button {
+  background-color: var(--latte-flamingo);
+  color: var(--latte-text);
+}
+
+body.latte .confirm-overwrite-dialog button:hover {
+  background-color: var(--latte-red);
+}
+
+/* Collection block */
+body.latte .collection-block {
+  background-color: var(--latte-surface1);
+}
+
+/* For Latte Theme */
+body.latte .color-block:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Light overlay for latte */
+  z-index: 1;
+}
+
+/* Latte theme text color */
+body.latte .color-info {
+  color: var(--latte-text);
+}
+
+/* Border overlay specific to Latte theme */
+.border-overlay {
+  border: 2px solid var(--latte-border); /* Customize latte border color if needed */
+}

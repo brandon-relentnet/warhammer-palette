@@ -1,0 +1,165 @@
+@import url('./catppuccin-variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'); /* Poppins font */
+
+/* Base body theming */
+body {
+  font-family: "Poppins", sans-serif; /* Use Poppins font */
+}
+
+/* Sticky Navbar */
+nav {
+  padding: 10px;
+  display: flex;
+  justify-content: center; /* Center the navigation links */
+  align-items: center; /* Align items vertically */
+  position: sticky; /* Make the navbar sticky */
+  top: 0; /* Stick to the top of the screen */
+  z-index: 1000; /* Ensure the navbar stays on top */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+nav li {
+  display: inline;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+/* Search Icon Button */
+.search-button {
+  position: absolute;
+  left: 10px; /* Position search button on the far left */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none; /* No background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor */
+  outline: none; /* Remove focus outline */
+}
+
+.search-button i {
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: absolute; /* Make it independent of the normal layout flow */
+  right: 10px; /* Position it on the far right */
+  top: 50%; /* Center it vertically relative to nav */
+  transform: translateY(-50%); /* Adjust vertical centering */
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  cursor: pointer; /* Keep pointer cursor */
+  outline: none; /* Remove any default outline on focus */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth animation */
+}
+
+.theme-toggle i {
+  font-size: 24px; /* Set icon size */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.theme-toggle:active i {
+  transform: scale(1.1); /* Slight scale-up */
+}
+
+/* Confirm overwrite dialog */
+.confirm-overwrite-dialog {
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-overwrite-dialog button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.confirm-overwrite-dialog button:hover {
+  background-color: var(--mocha-red);
+}
+
+/* Collection block styling */
+.collection-block {
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.color-block {
+  position: relative;
+  width: 150px; /* Fixed width for square */
+  height: 150px; /* Fixed height to match width */
+  cursor: pointer;
+  transition: transform 0.2s ease, z-index 0s ease, box-shadow 0.2s ease, border 0.2s ease; /* Added box-shadow and border transition */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Default z-index */
+}
+
+/* Border on hover (without affecting block size) */
+.border-overlay {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid var(--mocha-pink); /* Default border */
+  pointer-events: none; /* Ensure the border doesn't affect hover events */
+}
+
+/* Hover effect */
+.color-block:hover {
+  transform: scale(1.05); /* Scale up slightly */
+  z-index: 10; /* Bring the block above others */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Default shadow */
+  box-shadow: 0 10px 20px var(--dynamic-shadow-color); /* Updated shadow to match color's hex */
+}
+
+.color-block.added {
+  opacity: 0.5; /* Semi-transparent if already added to collection */
+}
+
+/* Selected overlay state */
+.color-block.selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+  z-index: 1;
+}
+
+/* Text overlay */
+.color-info {
+  position: relative;
+  z-index: 2; /* Ensure text is above the overlay */
+  opacity: 0; /* Hide text initially */
+  transition: opacity 0.2s ease;
+  text-align: center;
+}
+
+.color-block:hover .color-info,
+.color-block.selected .color-info {
+  opacity: 1; /* Show text on hover or selection */
+}

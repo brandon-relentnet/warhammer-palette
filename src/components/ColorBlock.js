@@ -18,6 +18,7 @@ const ColorBlock = ({
 
   const blockClass = isAddedToCollection ? "color-block added" : "color-block";
   const selectedClass = isSelected ? "selected" : "";
+  const fontSize = blockSize * 0.15;
 
   return (
     <div
@@ -40,11 +41,15 @@ const ColorBlock = ({
         className="hover-overlay"
         style={{
           opacity: isHovered || isSelected ? 1 : 0,
-          
         }}
       ></div>
 
-      <div className="color-info">
+      <div
+        className="color-info"
+        style={{
+          fontSize: `${fontSize}px`, // Set text size based on block size
+        }}
+      >
         <span className="color-name">{color.name}</span>
         <br />
         <span className="color-hex">{color.hexCode}</span>

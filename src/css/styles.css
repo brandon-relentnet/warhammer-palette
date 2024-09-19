@@ -12,11 +12,12 @@ body {
   font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: center;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease-in-out;
   background-color: var(--base);
   color: var(--text);
   min-height: 100%;
   padding-bottom: 100px;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 #root {
@@ -48,6 +49,7 @@ nav {
   z-index: 1000;
   background-color: var(--mantle);
   font-weight: bold;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 nav ul {
@@ -65,7 +67,7 @@ nav li {
 .nav-link {
   color: var(--text);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease-in-out;
 }
 
 .nav-link:hover {
@@ -81,7 +83,7 @@ nav li {
 
 .total-number,
 .total-blocks-container {
-  transition: color 0.3s ease;
+  transition: color 0.3s ease-in-out;
   
 }
 
@@ -119,7 +121,7 @@ nav li {
 
 .search-button i {
   font-size: 24px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease-in-out;
   color: var(--text);
 }
 
@@ -166,7 +168,7 @@ nav li {
 }
 
 .theme-toggle i {
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
   width: 24px;
   height: 24px;
   font-size: 24px;
@@ -198,7 +200,7 @@ nav li {
   height: 8px;
   outline: none;
   border-radius: 6px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease-in-out;
   margin-right: 25px;
   background: var(--surface2);
   margin: 0;
@@ -217,7 +219,7 @@ nav li {
   height: 20px;
   border-radius: 6px;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
   border: none;
   background: var(--text);
   box-sizing: border-box;
@@ -246,7 +248,7 @@ nav li {
   width: 150px;
   height: 150px;
   cursor: pointer;
-  transition: transform 0.2s ease, z-index 0s ease, box-shadow 0.2s ease, border 0.2s ease;
+  transition: transform 0.2s ease-in-out, z-index 0s ease-in-out, box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,9 +297,10 @@ nav li {
   position: relative;
   z-index: 2;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease-in-out;
   text-align: center;
   color: var(--text);
+  padding: 10px;
 }
 
 /***************************************************/

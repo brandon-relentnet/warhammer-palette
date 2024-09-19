@@ -15,7 +15,9 @@ const ThemeManager = () => {
   }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === "mocha" ? "latte" : "mocha";
+    const themes = ["mocha", "macchiato", "frappe", "latte"];
+    const currentThemeIndex = themes.indexOf(theme);
+    const newTheme = themes[(currentThemeIndex + 1) % themes.length];
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme); // Save theme to localStorage
     document.body.className = newTheme; // Apply theme class to body
@@ -24,6 +26,10 @@ const ThemeManager = () => {
   return (
     <button className="theme-toggle" onClick={toggleTheme}>
       {theme === "mocha" ? (
+        <i className="fas fa-palette"></i>
+      ) : theme === "macchiato" ? (
+        <i className="fas fa-cloud"></i>
+      ) : theme === "frappe" ? (
         <i className="fas fa-sun"></i>
       ) : (
         <i className="fas fa-moon"></i>

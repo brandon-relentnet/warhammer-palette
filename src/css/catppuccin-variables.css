@@ -1,4 +1,8 @@
 /* Variables */
+:root {
+    --transition-duration: .3s;
+}
+
 body.mocha {
   /* Mocha */
   --rosewater: #f5e0dc;

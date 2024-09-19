@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import "../css/global.css";
-import "../css/latte.css";
-import "../css/mocha.css"; 
-
+import "../css/styles.css";
 const hexToRgba = (hex, alpha = 0.5) => {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -43,7 +40,7 @@ const ColorBlock = ({
         className="hover-overlay"
         style={{
           opacity: isHovered || isSelected ? 1 : 0,
-          backgroundColor: isHovered ? "var(--overlay-color)" : "transparent", // Theme-based overlay color
+          
         }}
       ></div>
 

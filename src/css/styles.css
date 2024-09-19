@@ -1,0 +1,332 @@
+@import url("./catppuccin-variables.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"); /* Poppins font */
+
+/***************************************************/
+/*                                                 */
+/*              BASE STYLING                       */
+/*                                                 */
+/***************************************************/
+
+/* Base body theming */
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  transition: color 0.3s ease;
+  background-color: var(--base);
+  color: var(--text);
+  min-height: 100%;
+  padding-bottom: 100px;
+}
+
+#root {
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+/***************************************************/
+/*                                                 */
+/*              NAVBAR STYLES                      */
+/*                                                 */
+/***************************************************/
+
+/* Sticky Navbar */
+nav {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--mantle);
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 25px;
+}
+
+nav li {
+  display: inline;
+}
+
+.nav-link {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  color: var(--overlay1);
+}
+
+/* Active link highlighting */
+.active-nav-link,
+.active-nav-link:hover {
+  color: var(--pink) !important;
+}
+
+.total-number,
+.total-blocks-container {
+  transition: color 0.3s ease;
+  
+}
+
+.displayed-colors {
+  position: absolute; /* Make it independent of the normal layout flow */
+  left: 25px; /* Position it on the far right */
+}
+
+.total-number {
+  color: var(--pink);
+}
+
+/***************************************************/
+/*                                                 */
+/*        SEARCH BUTTON & FILTERS STYLES           */
+/*                                                 */
+/***************************************************/
+
+/* Filters and Search Button */
+.filters-search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+}
+
+.search-button i {
+  font-size: 24px;
+  transition: color 0.3s ease;
+  color: var(--text);
+}
+
+.search-button:hover i {
+  color: var(--overlay1);
+}
+
+/***************************************************/
+/*                                                 */
+/*           LAYOUT CONTAINERS STYLES              */
+/*                                                 */
+/***************************************************/
+
+/* Layout Containers */
+.color-block-display,
+.collection-block-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+  justify-content: center;
+}
+
+.palette-route-container,
+.collection-route-container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+
+/***************************************************/
+/*                                                 */
+/*           THEME TOGGLE & SLIDER STYLES          */
+/*                                                 */
+/***************************************************/
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.theme-toggle i {
+  transition: color 0.3s ease, transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
+  color: var(--text);
+}
+
+.theme-toggle:hover i {
+  transform: scale(1.1);
+}
+
+.theme-toggle:active i {
+  transform: scale(1.4);
+}
+
+.slider-theme-container {
+  position: absolute;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Slider Styling */
+#block-size-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 150px;
+  height: 8px;
+  outline: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  margin-right: 25px;
+  background: var(--surface2);
+  margin: 0;
+  padding: 0;
+  margin-right: 25px;
+}
+
+#block-size-slider:hover::-webkit-slider-thumb,
+#block-size-slider:hover::-moz-range-thumb {
+  transform: scale(1.3);
+}
+
+#block-size-slider::-webkit-slider-thumb,
+#block-size-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  border: none;
+  background: var(--text);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/***************************************************/
+/*                                                 */
+/*           BLOCKS & OVERLAYS STYLES              */
+/*                                                 */
+/***************************************************/
+
+/* Collection block styling */
+.collection-block {
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--surface1);
+  color: var(--text);
+}
+
+/* Color Block Styling */
+.color-block {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  transition: transform 0.2s ease, z-index 0s ease, box-shadow 0.2s ease, border 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.border-overlay {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  pointer-events: none;
+  border: 2px solid var(--pink);
+}
+
+.color-block:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 10px 20px var(--dynamic-shadow-color);
+}
+
+.color-block.added {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.color-block.selected::before,
+.color-block:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-block-overlay);
+  z-index: 1;
+}
+
+.color-block:hover .color-info,
+.color-block.selected .color-info {
+  opacity: 1;
+}
+
+.color-info {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  text-align: center;
+  color: var(--text);
+}
+
+/***************************************************/
+/*                                                 */
+/*     CONFIRM OVERWRITE DIALOG STYLES             */
+/*                                                 */
+/***************************************************/
+
+/* Confirm overwrite dialog */
+.confirm-overwrite-dialog {
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--surface2);
+  color: var(--text);
+  border: 2px solid var(--overlay1);
+}
+
+.confirm-overwrite-dialog button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: var(--pink);
+  color: var(--text);
+}
+
+.confirm-overwrite-dialog button:hover {
+  background-color: var(--red);
+}

@@ -1,6 +1,4 @@
-import "./css/global.css";
-import "./css/mocha.css";
-import "./css/latte.css";
+import "./css/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";

@@ -5,10 +5,7 @@ import ColorBlockDisplay from "./components/ColorBlockDisplay";
 import CollectionDisplay from "./components/CollectionDisplay";
 import Search from "./components/Search";
 import { getFilteredColors } from "./helpers/colorHelpers";
-
-import "./css/global.css";
-import "./css/latte.css";
-import "./css/mocha.css";
+import "./css/styles.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";

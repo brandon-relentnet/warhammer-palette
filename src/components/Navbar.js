@@ -3,17 +3,10 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Slider from "./Slider";
 import TotalBlocks from "./TotalBlocks";
-import "../css/global.css";
-import "../css/latte.css";
-import "../css/mocha.css";
+import "../css/styles.css";
 import ThemeManager from "./ThemeManager";
 
-const Navbar = ({
-  filteredColors,
-  collection,
-  blockSize,
-  setBlockSize,
-}) => {
+const Navbar = ({ filteredColors, collection, blockSize, setBlockSize }) => {
   const location = useLocation();
 
   const totalBlocks =

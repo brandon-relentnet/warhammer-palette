@@ -1,8 +1,6 @@
 import React from 'react';
 import ColorBlock from './ColorBlock';
-import "../css/global.css";
-import "../css/latte.css";
-import "../css/mocha.css"; 
+import "../css/styles.css";
 
 const ColorBlockDisplay = ({ colors, selectedColors, handleColorSelect, handleAddToCollection, collection, blockSize }) => {
   return (

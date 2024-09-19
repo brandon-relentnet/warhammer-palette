@@ -1,8 +1,6 @@
 import React from 'react';
 import ColorBlock from './ColorBlock'; // Use the same ColorBlock component for consistent behavior
-import "../css/global.css";
-import "../css/latte.css";
-import "../css/mocha.css"; 
+import "../css/styles.css";
 
 const CollectionDisplay = ({
   collection,

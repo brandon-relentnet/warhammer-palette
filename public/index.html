@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background:#1e1e2e">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/warhammer-palette-logo192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Warhammer Palette Collection - A tool to help hobbyists manage and organize Warhammer paint colors."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/warhammer-palette-logo.png" />
+    <link
+      rel="apple-touch-icon"
+      href="%PUBLIC_URL%/warhammer-palette-logo.png"
+    />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Warhammer Palette Collection</title>
   </head>
-  <body>
+  <body id="body" style="display:none">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <footer>
+    <script type="text/javascript">
+    window.onload = function () {
+        setTimeout(function() {
+            document.getElementById("body").style.display = "";        
+        }, 100);
+    }
+</script>
+  </footer>
 </html>

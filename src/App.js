@@ -11,6 +11,7 @@ import colorsData from "./color_database.json";
 
 function App() {
   const [filteredColors, setFilteredColors] = useState([]);
+  const [filteredCollection, setFilteredCollection] = useState([]); // Filtered collection
   const [selectedColors, setSelectedColors] = useState([]);
   const [collection, setCollection] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,6 +20,7 @@ function App() {
     return savedSize ? parseInt(savedSize, 10) : 150;
   });
 
+  // Load stored collection from localStorage
   useEffect(() => {
     const storedCollection = localStorage.getItem("colorCollection");
     if (storedCollection) {
@@ -26,12 +28,14 @@ function App() {
     }
   }, []);
 
+  // Update localStorage whenever collection changes
   useEffect(() => {
     if (collection.length > 0) {
       localStorage.setItem("colorCollection", JSON.stringify(collection));
     }
   }, [collection]);
 
+  // Load block size from localStorage
   useEffect(() => {
     const storedBlockSize = localStorage.getItem("blockSize");
     if (storedBlockSize) {
@@ -42,6 +46,16 @@ function App() {
   return (
     <Router>
       <Navbar blockSize={blockSize} setBlockSize={setBlockSize} />
+      <div className="filters-search-container">
+        <Filters
+          colorsData={colorsData}
+          collection={collection} // Pass full collection
+          onFilteredColorsChange={setFilteredColors} // Update filtered palette
+          onFilteredCollectionChange={setFilteredCollection} // Update filtered collection
+          searchTerm={searchTerm}
+        />
+        <Search handleSearch={setSearchTerm} />
+      </div>
       {/* Routing */}
       <Routes>
         <Route
@@ -56,17 +70,8 @@ function App() {
           path="/palette"
           element={
             <div className="palette-route-container">
-              <div className="filters-search-container">
-                <Filters
-                  colorsData={colorsData}
-                  collection={collection}
-                  onFilteredColorsChange={setFilteredColors} // Update filteredColors
-                  searchTerm={searchTerm}
-                />
-                <Search handleSearch={setSearchTerm} />
-              </div>
               <ColorBlockDisplay
-                colors={filteredColors}
+                colors={filteredColors} // Pass the filtered colors for the palette
                 collection={collection}
                 setCollection={setCollection} // Allow adding/removing from collection
                 selectedColors={selectedColors}
@@ -81,7 +86,7 @@ function App() {
           element={
             <div className="collection-route-container">
               <ColorBlockDisplay
-                colors={filteredColors} // Still pass filtered colors
+                colors={filteredCollection} // Pass filtered collection
                 collection={collection}
                 setCollection={setCollection} // Allow removing from collection
                 selectedColors={selectedColors}

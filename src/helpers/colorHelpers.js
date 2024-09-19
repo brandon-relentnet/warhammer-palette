@@ -42,7 +42,7 @@ export function hexToHSL(hex) {
   return { h: h * 360, s: s * 100, l: l * 100 };
 }
 
-export function sortColorsByHSL(colors) {
+function sortColorsByHSL(colors) {
   return colors.sort((a, b) => {
     const hslA = hexToHSL(a.hexCode);
     const hslB = hexToHSL(b.hexCode);

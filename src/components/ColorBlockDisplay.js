@@ -5,9 +5,9 @@ import { useLocation } from "react-router-dom";
 import OverwriteConfirmation from "./OverwriteConfirmation";
 
 const ColorBlockDisplay = ({
-  colors,
+  colors, // These are the filtered colors from palette or collection
   blockSize,
-  collection,
+  collection, // Full collection
   setCollection,
   selectedColors,
   setSelectedColors,
@@ -31,7 +31,6 @@ const ColorBlockDisplay = ({
       }
     }
   };
-
 
   const handleColorSelect = (color) => {
     setSelectedColors((prevColors) =>
@@ -85,9 +84,6 @@ const ColorBlockDisplay = ({
     reader.readAsText(file);
   };
 
-  // If we're on the collection page, display only the collection; otherwise, display the colors palette
-  const displayedColors = isCollectionPage ? collection : colors;
-
   return (
     <div className="color-block-display-container">
       {isCollectionPage ? (
@@ -118,9 +114,9 @@ const ColorBlockDisplay = ({
             />
           </div>
 
-          {/* Display Collection */}
+          {/* Display Filtered Collection */}
           <div className="collection-block-display">
-            {collection.map((color) => (
+            {colors.map((color) => (
               <ColorBlock
                 key={color.name}
                 color={color}
@@ -135,7 +131,7 @@ const ColorBlockDisplay = ({
       ) : (
         <>
           <div className="color-block-display">
-            {displayedColors.map((color) => {
+            {colors.map((color) => {
               const isAddedToCollection = collection.some(
                 (collectedColor) => collectedColor.name === color.name
               );

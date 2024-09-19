@@ -18,6 +18,7 @@ const Filters = ({
   colorsData,
   collection,
   onFilteredColorsChange,
+  onFilteredCollectionChange, // New prop for collection filtering
   searchTerm,
 }) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -38,30 +39,36 @@ const Filters = ({
 
   // Function to handle filtering logic (based on search term and filters)
   useEffect(() => {
-    const currentDataSet = isCollectionPage ? collection : colorsData;
+    const currentDataSet = isCollectionPage ? collection : colorsData; // Select the correct data set
     const filtered = getFilteredColors(
       currentDataSet,
       searchTerm,
       selectedFilters
     );
+
     setFilteredColors(filtered);
-    onFilteredColorsChange(filtered); // Pass the filtered colors back to parent
+
+    // Pass the filtered colors or filtered collection back to the parent
+    if (isCollectionPage) {
+      onFilteredCollectionChange(filtered); // Filtered collection for collection page
+    } else {
+      onFilteredColorsChange(filtered); // Filtered colors for the palette
+    }
   }, [
     selectedFilters,
     searchTerm,
     colorsData,
     collection,
     onFilteredColorsChange,
+    onFilteredCollectionChange,
     isCollectionPage,
   ]);
 
   return (
     <div className="side-navbar-container">
       <div className="displayed-colors">
-        <TotalBlocks
-          filteredColors={filteredColors} // Show filtered colors
-          collection={collection} // Pass the collection prop
-        />
+        <TotalBlocks filteredColors={filteredColors.length} />{" "}
+        {/* Show the count */}
       </div>
       <div className="filters-container">
         {filterOptions.map((filter) => (
@@ -85,7 +92,7 @@ const Filters = ({
                 points="11.78 18.12 15.55 22.23 25.17 12.87"
               ></polyline>
             </svg>
-            <span>{filter}/</span>
+            <span>{filter}</span>
           </label>
         ))}
       </div>

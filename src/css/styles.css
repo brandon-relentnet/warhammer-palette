@@ -16,7 +16,8 @@ body {
   background-color: var(--base);
   color: var(--text);
   min-height: 100%;
-  transition: color var(--transition-duration) ease-in-out, background-color var(--transition-duration) ease-in-out;
+  transition: color var(--transition-duration) ease-in-out,
+    background-color var(--transition-duration) ease-in-out;
 }
 
 #root {
@@ -48,7 +49,8 @@ nav {
   z-index: 1000;
   background-color: var(--mantle);
   font-weight: bold;
-  transition: color var(--transition-duration) ease-in-out, background-color var(--transition-duration) ease-in-out;
+  transition: color var(--transition-duration) ease-in-out,
+    background-color var(--transition-duration) ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
@@ -87,8 +89,7 @@ nav li {
 }
 
 .displayed-colors {
-  position: absolute; /* Make it independent of the normal layout flow */
-  left: 25px; /* Position it on the far right */
+  left: 25px; 
 }
 
 .total-number {
@@ -97,7 +98,7 @@ nav li {
 
 /***************************************************/
 /*                                                 */
-/*        SEARCH BUTTON & FILTERS STYLES           */
+/*             BUTTON & FILTERS STYLES             */
 /*                                                 */
 /***************************************************/
 
@@ -114,7 +115,7 @@ nav li {
   cursor: pointer;
   outline: none;
   position: fixed;
-  bottom: 40px;
+  bottom: 100px;
   right: 20px;
 }
 
@@ -126,6 +127,96 @@ nav li {
 
 .search-button:hover i {
   color: var(--overlay1);
+}
+
+.add-to-collection-button-pushable {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms, ease all var(--transition-duration);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.add-to-collection-button-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--shadow-light); /* Use shadow variable */
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1), ease all var(--transition-duration);
+}
+
+.add-to-collection-button-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--shadow-inset);
+  transition: ease all var(--transition-duration);
+}
+
+.add-to-collection-button-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: var(--text); /* Variable for text color */
+  background: var(--surface0); /* Use variable for the primary color */
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1), ease all var(--transition-duration);
+}
+
+@media (min-width: 768px) {
+  .add-to-collection-button-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.add-to-collection-button-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.add-to-collection-button-pushable:hover .add-to-collection-button-front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.add-to-collection-button-pushable:active .add-to-collection-button-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.add-to-collection-button-pushable:hover .add-to-collection-button-shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.add-to-collection-button-pushable:active .add-to-collection-button-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.add-to-collection-button-pushable:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /***************************************************/
@@ -169,7 +260,8 @@ nav li {
 }
 
 .theme-toggle i {
-  transition: color var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
+  transition: color var(--transition-duration) ease-in-out,
+    transform var(--transition-duration) ease-in-out;
   width: 24px;
   height: 24px;
   font-size: 24px;
@@ -220,7 +312,8 @@ nav li {
   height: 20px;
   border-radius: 6px;
   cursor: pointer;
-  transition: color var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
+  transition: color var(--transition-duration) ease-in-out,
+    transform var(--transition-duration) ease-in-out;
   border: none;
   background: var(--text);
   box-sizing: border-box;
@@ -255,6 +348,10 @@ nav li {
   justify-content: center;
   align-items: center;
   z-index: 1;
+}
+
+.color-hex {
+  font-weight: bold;
 }
 
 .border-overlay {
@@ -346,18 +443,19 @@ nav li {
   stroke-dashoffset: 0;
 }
 
-.filters-container {
+.side-navbar-container {
   display: flex;
   flex-direction: column;
   position: fixed;
-  left: 4%;
-  top: 30%;
+  left: 0%;
+  top: 0%;
+  z-index: 1000;
+  height: 100%;
   background-color: var(--mantle);
-  border-radius: 6px;
   padding: 20px;
   padding-bottom: 10px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  transition: color var(--transition-duration) ease-in-out, background-color var(--transition-duration) ease-in-out;
+  transition: color var(--transition-duration) ease-in-out,
+    background-color var(--transition-duration) ease-in-out;
 }
 
 .checkbox-wrapper {
@@ -377,7 +475,7 @@ nav li {
 
 .checkbox-wrapper .stroke {
   fill: none;
-  stroke: var(--surface1);
+  stroke: var(--surface0);
   stroke-miterlimit: 10;
   stroke-width: 2px;
   stroke-dashoffset: 100;
@@ -388,7 +486,7 @@ nav li {
 
 .checkbox-wrapper .check {
   fill: none;
-  stroke: var(--surface1);
+  stroke: var(--surface0);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2px;
@@ -420,8 +518,8 @@ nav li {
 
 .checkbox-wrapper input[type="checkbox"]:checked + svg .background {
   fill: var(--pink);
-  transition: color var(--transition-duration) ease-in-out, background-color var(--transition-duration) ease-in-out;
-
+  transition: color var(--transition-duration) ease-in-out,
+    background-color var(--transition-duration) ease-in-out;
 }
 
 .checkbox-wrapper input[type="checkbox"]:checked + svg + span {

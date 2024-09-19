@@ -1,28 +1,15 @@
 // Navbar.js
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Slider from "./Slider";
-import TotalBlocks from "./TotalBlocks";
 import "../css/styles.css";
 import ThemeManager from "./ThemeManager";
 
-const Navbar = ({ filteredColors, collection, blockSize, setBlockSize }) => {
-  const location = useLocation();
-
-  const totalBlocks =
-    location.pathname === "/collection"
-      ? collection.length
-      : location.pathname === "/"
-      ? 0
-      : filteredColors.length;
-
+const Navbar = ({ blockSize, setBlockSize }) => {
   return (
     <div className="navbar-container">
       {/* Navigation */}
       <nav>
-        <div className="displayed-colors">
-          <TotalBlocks total={totalBlocks} />
-        </div>
         <ul>
           <li>
             <NavLink

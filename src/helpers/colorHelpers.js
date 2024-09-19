@@ -1,4 +1,3 @@
-import colorsData from "../color_database.json";
 // Helper function to convert hex to HSL
 export function hexToHSL(hex) {
   let r = 0,
@@ -53,38 +52,37 @@ export function sortColorsByHSL(colors) {
   });
 }
 
-export function getFilteredColors(searchTerm, selectedFilters) {
+export function getFilteredColors(dataSet = [], searchTerm, selectedFilters) {
+  if (!Array.isArray(dataSet)) {
+    console.error("Expected dataSet to be an array, but got:", typeof dataSet);
+    return [];
+  }
+
   return sortColorsByHSL(
-    colorsData.filter((color) => {
+    dataSet.filter((color) => {
       const matchesSearch =
         color.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         color.hexCode.toLowerCase().includes(searchTerm.toLowerCase());
 
-      // Ensure color.type is always an array and standardize to lowercase
       const colorTypes = color.type
         ? (Array.isArray(color.type) ? color.type : [color.type]).map((type) =>
             type.toLowerCase()
           )
         : [];
 
-      // If no filters are selected, display all colors that match the search term
       if (selectedFilters.length === 0) {
         return matchesSearch;
       }
 
-      // Standardize selected filters to lowercase and match against color type
       const normalizedSelectedFilters = selectedFilters.map((filter) =>
         filter.toLowerCase()
       );
 
-      // Check if any of the color's types match any of the selected filters
       const matchesFilter = normalizedSelectedFilters.some((filter) =>
         colorTypes.includes(filter)
       );
 
-      // Return true if the color matches both the search term and any selected filter
       return matchesSearch && matchesFilter;
     })
   );
 }
-

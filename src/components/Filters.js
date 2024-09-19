@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TotalBlocks from "./TotalBlocks";
 import { useLocation } from "react-router-dom";
+import TotalBlocks from "./TotalBlocks";
 import { getFilteredColors } from "../helpers/colorHelpers"; // Import the filter helper
 
 const filterOptions = [
@@ -18,7 +18,7 @@ const Filters = ({
   colorsData,
   collection,
   onFilteredColorsChange,
-  onFilteredCollectionChange, // New prop for collection filtering
+  onFilteredCollectionChange,
   searchTerm,
 }) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -27,6 +27,7 @@ const Filters = ({
 
   // Determine if the current route is the collection page
   const isCollectionPage = location.pathname === "/collection";
+  const isHomePage = location.pathname === "/";
 
   // Function to handle filter changes
   const handleFilterChange = (filter) => {
@@ -63,6 +64,11 @@ const Filters = ({
     onFilteredCollectionChange,
     isCollectionPage,
   ]);
+
+  // Only render the filters if the current page is not the home page
+  if (isHomePage) {
+    return null;
+  }
 
   return (
     <div className="side-navbar-container">

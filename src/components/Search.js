@@ -1,9 +1,17 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // Ensure FontAwesome is available
 
 const Search = ({ handleSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showInput, setShowInput] = useState(false); // State to toggle input field
+  const location = useLocation(); // Get the current route
+  const isHomePage = location.pathname === "/"; // Check if it's the home page
+
+  // Only render the search input if not on the home page
+  if (isHomePage) {
+    return null;
+  }
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);

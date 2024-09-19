@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Filters from "./components/Filters";
-import ColorBlockDisplay from "./components/ColorBlockDisplay";
 import Search from "./components/Search";
 import "./css/styles.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import HomeRoute from "./components/routes/HomeRoute";
 import Navbar from "./components/Navbar";
+import HomeRoute from "./components/routes/HomeRoute"; // Import HomeRoute component
+import PaletteRoute from "./components/routes/PaletteRoute"; // Import PaletteRoute component
+import CollectionRoute from "./components/routes/CollectionRoute"; // Import CollectionRoute component
 import colorsData from "./color_database.json";
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
       <div className="filters-search-container">
         <Filters
           colorsData={colorsData}
-          collection={collection} // Pass full collection
+          collection={collection}
           onFilteredColorsChange={setFilteredColors} // Update filtered palette
           onFilteredCollectionChange={setFilteredCollection} // Update filtered collection
           searchTerm={searchTerm}
@@ -58,42 +59,31 @@ function App() {
       </div>
       {/* Routing */}
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="home-route-container">
-              <HomeRoute />
-            </div>
-          }
-        />
+        <Route path="/" element={<HomeRoute />} />
         <Route
           path="/palette"
           element={
-            <div className="palette-route-container">
-              <ColorBlockDisplay
-                colors={filteredColors} // Pass the filtered colors for the palette
-                collection={collection}
-                setCollection={setCollection} // Allow adding/removing from collection
-                selectedColors={selectedColors}
-                setSelectedColors={setSelectedColors}
-                blockSize={blockSize}
-              />
-            </div>
+            <PaletteRoute
+              colors={filteredColors}
+              collection={collection}
+              setCollection={setCollection}
+              selectedColors={selectedColors}
+              setSelectedColors={setSelectedColors}
+              blockSize={blockSize}
+            />
           }
         />
         <Route
           path="/collection"
           element={
-            <div className="collection-route-container">
-              <ColorBlockDisplay
-                colors={filteredCollection} // Pass filtered collection
-                collection={collection}
-                setCollection={setCollection} // Allow removing from collection
-                selectedColors={selectedColors}
-                setSelectedColors={setSelectedColors}
-                blockSize={blockSize}
-              />
-            </div>
+            <CollectionRoute
+              filteredCollection={filteredCollection}
+              collection={collection}
+              setCollection={setCollection}
+              selectedColors={selectedColors}
+              setSelectedColors={setSelectedColors}
+              blockSize={blockSize}
+            />
           }
         />
       </Routes>

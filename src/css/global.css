@@ -180,7 +180,6 @@ nav li {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  border: 2px solid var(--mocha-pink); /* Default border */
   pointer-events: none; /* Ensure the border doesn't affect hover events */
 }
 

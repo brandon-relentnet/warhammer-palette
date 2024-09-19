@@ -60,7 +60,7 @@ body.latte .color-info {
 
 /* Border overlay specific to Latte theme */
 body.latte .border-overlay {
-  border: 2px solid var(--latte-border); /* Customize latte border color if needed */
+  border: 2px solid var(--latte-pink);
 }
 
 /* Latte Slider */

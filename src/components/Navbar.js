@@ -6,14 +6,13 @@ import TotalBlocks from "./TotalBlocks";
 import "../css/global.css";
 import "../css/latte.css";
 import "../css/mocha.css";
+import ThemeManager from "./ThemeManager";
 
 const Navbar = ({
   filteredColors,
   collection,
   blockSize,
   setBlockSize,
-  toggleTheme,
-  theme,
 }) => {
   const location = useLocation();
 
@@ -72,13 +71,7 @@ const Navbar = ({
               localStorage.setItem("blockSize", newSize);
             }}
           />
-          <button className="theme-toggle" onClick={toggleTheme}>
-            {theme === "mocha" ? (
-              <i className="fas fa-sun"></i>
-            ) : (
-              <i className="fas fa-moon"></i>
-            )}
-          </button>
+          <ThemeManager />{" "}
         </div>
       </nav>
     </div>

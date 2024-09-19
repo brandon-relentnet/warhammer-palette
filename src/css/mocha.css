@@ -22,6 +22,10 @@ body {
   color: var(--mocha-text); /* Set icon color */
 }
 
+body.mocha .border-overlay {
+  border: 2px solid var(--mocha-pink); /* Default border */
+}
+
 /* Confirm overwrite dialog */
 .confirm-overwrite-dialog {
   background-color: var(--mocha-surface2);
@@ -59,11 +63,6 @@ body.mocha .color-block:hover::before {
 /* Mocha theme text color */
 body.mocha .color-info {
   color: var(--mocha-text);
-}
-
-/* Border overlay specific to Mocha theme */
-body.mocha .border-overlay {
-  border: 2px solid var(--mocha-pink); /* Mocha theme default */
 }
 
 /* Mocha Slider */

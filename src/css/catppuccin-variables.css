@@ -1,6 +1,8 @@
 /* Variables */
 :root {
     --transition-duration: .3s;
+    --transition-duration-extended: .6s;
+    --backwards: cubic-bezier(.68, -0.55, .27, 1.55);
 }
 
 body.mocha {

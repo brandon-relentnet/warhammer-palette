@@ -52,6 +52,13 @@ function sortColorsByHSL(colors) {
   });
 }
 
+export const hexToRgba = (hex, alpha = 0.5) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 export function getFilteredColors(dataSet = [], searchTerm, selectedFilters) {
   if (!Array.isArray(dataSet)) {
     console.error("Expected dataSet to be an array, but got:", typeof dataSet);

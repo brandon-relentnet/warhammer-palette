@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import "../css/styles.css";
-const hexToRgba = (hex, alpha = 0.5) => {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-};
+import { hexToRgba } from "../helpers/colorHelpers";
 
 const ColorBlock = ({
   color,
@@ -36,14 +31,6 @@ const ColorBlock = ({
         height: `${blockSize}px`,
       }}
     >
-      {/* Overlay for readability on hover */}
-      <div
-        className="hover-overlay"
-        style={{
-          opacity: isHovered || isSelected ? 1 : 0,
-        }}
-      ></div>
-
       <div
         className="color-info"
         style={{
@@ -55,8 +42,13 @@ const ColorBlock = ({
         <span className="color-hex">{color.hexCode}</span>
       </div>
 
-      {/* Border when hovered */}
-      {isHovered && <div className="border-overlay"></div>}
+      {/* Single border overlay with opacity and transition */}
+      <div
+        className="border-overlay"
+        style={{
+          opacity: isHovered || isSelected ? 1 : 0,
+        }}
+      ></div>
     </div>
   );
 };

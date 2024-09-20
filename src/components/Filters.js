@@ -98,7 +98,7 @@ const Filters = ({
                 points="11.78 18.12 15.55 22.23 25.17 12.87"
               ></polyline>
             </svg>
-            <span>{filter}</span>
+            <span>{filter}/</span>
           </label>
         ))}
       </div>

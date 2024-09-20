@@ -62,19 +62,41 @@ nav ul {
   gap: 25px;
 }
 
-nav li {
-  display: inline;
-}
-
-.nav-link {
+.nav-link, label.checkbox-wrapper span {
   color: var(--text);
+  position: relative;
+  display: inline-block;
   text-decoration: none;
   transition: color var(--transition-duration) ease-in-out;
 }
 
-.nav-link:hover {
-  text-decoration: underline;
-  color: var(--overlay1);
+.nav-link::after,
+label.checkbox-wrapper span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -1px;
+  left: 50%; /* Start from the center */
+  transform: translateX(-50%); /* Center it horizontally */
+  background-color: var(--pink); /* Adjust color as needed */
+  transition: width var(--transition-duration) ease;
+}
+
+.nav-link:hover::after,
+label.checkbox-wrapper span:hover::after {
+  width: 70%; /* Expand to 90% of the link's width */
+  left: 50%; /* Keep it centered */
+  transform: translateX(-50%);
+}
+
+.active-nav-link::after,
+.nav-link.active-nav-link:hover::after,
+.checkbox-wrapper input[type="checkbox"]:checked ~ span::after,
+.checkbox-wrapper input[type="checkbox"]:checked ~ span:hover::after {
+  width: 110%; /* Expand to 90% of the link's width */
+  left: 50%; /* Keep it centered */
+  transform: translateX(-50%);
 }
 
 /* Active link highlighting */
@@ -89,7 +111,7 @@ nav li {
 }
 
 .displayed-colors {
-  left: 25px; 
+  left: 25px;
 }
 
 .total-number {
@@ -156,7 +178,8 @@ nav li {
   background: var(--shadow-light); /* Use shadow variable */
   will-change: transform;
   transform: translateY(2px);
-  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1), ease all var(--transition-duration);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1),
+    ease all var(--transition-duration);
 }
 
 .add-to-collection-button-edge {
@@ -180,7 +203,8 @@ nav li {
   background: var(--surface0); /* Use variable for the primary color */
   will-change: transform;
   transform: translateY(-4px);
-  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1), ease all var(--transition-duration);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1),
+    ease all var(--transition-duration);
 }
 
 @media (min-width: 768px) {
@@ -467,6 +491,14 @@ nav li {
   font-weight: bold;
 }
 
+.checkbox-wrapper span {
+  cursor: pointer; /* Makes the span appear clickable */
+}
+
+.checkbox-wrapper span:hover, .nav-link:hover {
+  color: var(--subtext0); /* Change the text color on hover */
+}
+
 .checkbox-wrapper .background {
   fill: var(--surface0);
   transition: ease all var(--transition-duration);
@@ -486,7 +518,7 @@ nav li {
 
 .checkbox-wrapper .check {
   fill: none;
-  stroke: var(--surface0);
+  stroke: var(--surface1);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2px;

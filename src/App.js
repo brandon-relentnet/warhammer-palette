@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Filters from "./components/Filters";
-import Search from "./components/Search";
 import "./css/styles.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Navbar from "./components/Navbar";
@@ -15,7 +14,7 @@ function App() {
   const [filteredCollection, setFilteredCollection] = useState([]); // Filtered collection
   const [selectedColors, setSelectedColors] = useState([]);
   const [collection, setCollection] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  
   const [blockSize, setBlockSize] = useState(() => {
     const savedSize = localStorage.getItem("blockSize");
     return savedSize ? parseInt(savedSize, 10) : 150;
@@ -47,15 +46,14 @@ function App() {
   return (
     <Router>
       <Navbar blockSize={blockSize} setBlockSize={setBlockSize} />
-      <div className="filters-search-container">
+      <div className="filters-container">
         <Filters
           colorsData={colorsData}
           collection={collection}
           onFilteredColorsChange={setFilteredColors} // Update filtered palette
           onFilteredCollectionChange={setFilteredCollection} // Update filtered collection
-          searchTerm={searchTerm}
         />
-        <Search handleSearch={setSearchTerm} />
+        
       </div>
       {/* Routing */}
       <Routes>

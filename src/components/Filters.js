@@ -19,9 +19,10 @@ const Filters = ({
   collection,
   onFilteredColorsChange,
   onFilteredCollectionChange,
-  searchTerm,
 }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [showSearchBar, setShowSearchBar] = useState(false); // State to toggle search bar visibility
   const location = useLocation(); // Get the current route
   const [filteredColors, setFilteredColors] = useState([]);
 
@@ -36,6 +37,11 @@ const Filters = ({
       : [...selectedFilters, filter];
 
     setSelectedFilters(updatedFilters);
+  };
+
+  // Function to handle search bar visibility
+  const toggleSearchBar = () => {
+    setShowSearchBar(!showSearchBar); // Toggle the visibility of the search bar
   };
 
   // Function to handle filtering logic (based on search term and filters)
@@ -72,10 +78,30 @@ const Filters = ({
 
   return (
     <div className="side-navbar-container">
-      <div className="displayed-colors">
-        <TotalBlocks filteredColors={filteredColors.length} />{" "}
-        {/* Show the count */}
+      {/* The search bar at the top */}
+      <div
+        className={`search-bar-wrapper animate__animated ${
+          showSearchBar ? "animate__slideInDown show" : "animate__slideOutUp"
+        }`}
+      >
+        <input
+          type="text"
+          placeholder="name || hex"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
       </div>
+
+      <div className="displayed-colors-search">
+        {/* Total blocks and search button side by side */}
+        <TotalBlocks filteredColors={filteredColors.length} />
+        <button className="search-button" onClick={toggleSearchBar}>
+          {/* Conditionally apply class for active color change */}
+          <i className={`fas fa-search ${showSearchBar ? "active" : ""}`}></i>
+        </button>
+      </div>
+
       <div className="filters-container">
         {filterOptions.map((filter) => (
           <label key={filter} className="checkbox-wrapper">
